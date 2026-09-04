@@ -1,12 +1,15 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+
 import 'home.dart';
 
 const loginPink = Color(0xFFE91E63);
 const loginText = Color(0xFF171B26);
 const loginMuted = Color(0xFF8A8D96);
 
-const _font = 'Poppins'; // Asegúrate de tener 'Poppins' declarada en pubspec.yaml
+const _font =
+    'Poppins'; // Asegúrate de tener 'Poppins' declarada en pubspec.yaml
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -251,9 +254,7 @@ class _LoginPageState extends State<LoginPage> {
         child: SizedBox(
           width: 30,
           height: 30,
-          child: CustomPaint(
-            painter: _HangerPainter(loginPink),
-          ),
+          child: CustomPaint(painter: _HangerPainter(loginPink)),
         ),
       ),
     );
@@ -304,8 +305,10 @@ class _LoginPageState extends State<LoginPage> {
         ),
         filled: true,
         fillColor: Colors.white,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 13, vertical: 17),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 13,
+          vertical: 17,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(9),
           borderSide: const BorderSide(color: Color(0xFFE3E1E4)),
@@ -351,9 +354,7 @@ class _LoginPageState extends State<LoginPage> {
             });
           },
           icon: Icon(
-            obscure
-                ? Icons.visibility_outlined
-                : Icons.visibility_off_outlined,
+            obscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
             size: 19,
             color: const Color(0xFFAEB1B8),
           ),
@@ -389,9 +390,7 @@ class _LoginPageState extends State<LoginPage> {
         style: OutlinedButton.styleFrom(
           backgroundColor: Colors.white,
           side: const BorderSide(color: Color(0xFFE3E1E4)),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(9),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9)),
         ),
         child: google
             ? Image.network(
@@ -409,23 +408,23 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               )
             : apple
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(Icons.apple, size: 20, color: Colors.black),
-                      SizedBox(width: 6),
-                      Text(
-                        'iOS',
-                        style: TextStyle(
-                          fontFamily: _font,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  )
-                : const SizedBox(),
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.apple, size: 20, color: Colors.black),
+                  SizedBox(width: 6),
+                  Text(
+                    'iOS',
+                    style: TextStyle(
+                      fontFamily: _font,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              )
+            : const SizedBox(),
       ),
     );
   }
@@ -437,6 +436,7 @@ class _LoginPageState extends State<LoginPage> {
 
 class _HangerPainter extends CustomPainter {
   final Color color;
+
   _HangerPainter(this.color);
 
   @override
@@ -457,6 +457,7 @@ class _HangerPainter extends CustomPainter {
       width: w * 0.26,
       height: h * 0.26,
     );
+
     canvas.drawArc(hookRect, math.pi * 0.15, math.pi * 1.7, false, paint);
 
     // Brazos en "V" desde el vértice hacia los lados
@@ -465,6 +466,7 @@ class _HangerPainter extends CustomPainter {
       ..quadraticBezierTo(w * 0.5, h * 0.40, w * 0.10, h * 0.78)
       ..moveTo(w * 0.5, h * 0.32)
       ..quadraticBezierTo(w * 0.5, h * 0.40, w * 0.90, h * 0.78);
+
     canvas.drawPath(arms, paint);
 
     // Barra inferior
